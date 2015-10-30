@@ -1,9 +1,13 @@
+require_relative 'board'
+require_relative 'tile'
+
 class MineSweeper
-  attr_accessor :bomb_map
+  attr_accessor :bomb_map, :board
 
   def initialize(player)
     @player = player
     @bomb_map = populate(5)
+    @board = Board.new(@bomb_map)
   end
 
   def populate(bomb_count)
@@ -18,8 +22,28 @@ class MineSweeper
     @bomb_map
   end
 
+  def inspect
+
+  end
+
+  def play
+    if !won?
+      @board.display
+      @board.accept_move(get_input)
+    elsif @board.detonated?
+      puts "A bomb went off!"
+    else
+      puts "You win!"
+    end
+  end
+
+  def won?
+
+  end
+
 end
 
 
 c = MineSweeper.new("ben")
-p c.bomb_map
+# p c.bomb_map
+p c.board.build_board
