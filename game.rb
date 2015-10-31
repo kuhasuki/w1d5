@@ -6,7 +6,7 @@ class MineSweeper
 
   def initialize(player)
     @player = player
-    @bomb_map = populate(5)
+    @bomb_map = populate(7)
     @board = Board.new(@bomb_map)
   end
 
@@ -20,10 +20,7 @@ class MineSweeper
       end
     end
     @bomb_map
-  end
-
-  def inspect
-
+    # p @bomb_map
   end
 
   def play
@@ -44,6 +41,6 @@ class MineSweeper
 end
 
 
-c = MineSweeper.new("ben")
+d = MineSweeper.new("ben")
 # p c.bomb_map
-p c.board.build_board
+d.board.build_board
